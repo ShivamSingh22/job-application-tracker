@@ -7,9 +7,13 @@ const morgan = require('morgan');
 
 require('dotenv').config();
 
+const userRoute = require('./routes/userRoute')
+
 const sequelize = require('./util/database');
 
 const bodyParser = require('body-parser');
+
+const User = require('./models/userModel');
 
 const app = express();
 app.use(cors());
@@ -21,6 +25,8 @@ app.use(helmet());
 
 app.use(morgan('combined',{stream: accessLogStream}));
 
+app.use('/user',userRoute);
+
 app.use((req, res, next) => {
   res.setHeader(
     'Content-Security-Policy',
@@ -30,8 +36,9 @@ app.use((req, res, next) => {
 });
 
 sequelize
-.sync()
+.sync({force:true})
 .then(result => {
+    console.log('Database & tables created!');
     app.listen(process.env.PORT || 3000);
     console.log(`Listening on ${process.env.PORT}`);
     

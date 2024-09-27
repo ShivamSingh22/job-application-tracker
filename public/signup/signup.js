@@ -13,7 +13,7 @@ function handleFormSubmit(event) {
         password: password
     };
 
-    axios.post('http://localhost:3000/user/signup', obj)
+    axios.post('http://localhost:8080/user/signup', obj)
         .then((res) => {
       
             messageTxt.innerHTML = res.data.message;

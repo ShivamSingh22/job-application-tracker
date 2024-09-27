@@ -10,10 +10,10 @@ function handleFormSubmit(event){
         password:password
     }
 
-    axios.post('http://localhost:3000/user/login',obj)
+    axios.post('http://localhost:8080/user/login',obj)
     .then((res)=>{
         localStorage.setItem('token', res.data.token);
-        window.location.href = "../expense/expense.html"
+        window.location.href = "../home/home.html"
         messageLabel.innerHTML = res.data.message;
         event.target.reset();
     })
