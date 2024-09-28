@@ -20,6 +20,19 @@ const User = sequelize.define('users',{
         type: Sequelize.STRING,
         allowNull: false
     },
+    // New fields for profile management
+    firstName: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    lastName: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    careerGoals: {
+        type: Sequelize.TEXT,
+        allowNull: true
+    }
 });
 
 module.exports = User;
