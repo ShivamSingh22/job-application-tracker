@@ -110,9 +110,14 @@ async function checkAndSendReminders() {
   }
 }
 
-// Schedule the reminder task to run every day at midnight
-cron.schedule("40 21 * * *", checkAndSendReminders);
+function initializeReminderService() {
+  // Set up the cron job to run at your desired schedule
+  cron.schedule('0 9 * * *', () => {  
+    checkAndSendReminders();
+  });
+}
 
 module.exports = {
-  checkAndSendReminders,
+  initializeReminderService,
+  checkAndSendReminders
 };

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companies - Job Application Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="company.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../home/home.html">Job Application Tracker</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../home/home.html">Job Applications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../company/company.html">Companies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../jobLisitings/jobListing.html">Job Listings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../profile/profile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../login/login.html" id="logout-link">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Company Management</h1>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <button class="btn btn-primary mb-3" id="add-company-btn">
+                    <i class="bi bi-plus-circle"></i> Add New Company
+                </button>
+                <div id="company-form-container" style="display: none;">
+                    <form id="company-form">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Company Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="website" class="form-label">Website</label>
+                            <input type="url" class="form-control" id="website" name="website">
+                        </div>
+                        <div class="mb-3">
+                            <label for="industry" class="form-label">Industry</label>
+                            <input type="text" class="form-control" id="industry" name="industry">
+                        </div>
+                        <div class="mb-3">
+                            <label for="size" class="form-label">Company Size</label>
+                            <input type="text" class="form-control" id="size" name="size">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactPerson" class="form-label">Contact Person</label>
+                            <input type="text" class="form-control" id="contactPerson" name="contactPerson">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">Contact Email</label>
+                            <input type="email" class="form-control" id="contactEmail" name="contactEmail">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactPhone" class="form-label">Contact Phone</label>
+                            <input type="tel" class="form-control" id="contactPhone" name="contactPhone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Company</button>
+                    </form>
+                </div>
+                <div id="companies-list" class="list-group mt-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+    <script src="company.js"></script>
+</body>
+</html>
