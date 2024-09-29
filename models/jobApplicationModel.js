@@ -10,11 +10,13 @@ const JobApplication = sequelize.define('jobApplications', {
   },
   companyName: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    collate: 'utf8_general_ci'  // Add this line
   },
   jobTitle: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    collate: 'utf8_general_ci'  // Add this line
   },
   applicationDate: {
     type: Sequelize.DATE,

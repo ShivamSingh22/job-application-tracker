@@ -1,6 +1,7 @@
 const JobApplication = require('../models/jobApplicationModel');
 const s3Service = require('../services/s3services');
 const fs = require('fs');
+const { Op } = require('sequelize');
 
 exports.createJobApplication = async (req, res) => {
   try {
@@ -66,6 +67,51 @@ exports.deleteJobApplication = async (req, res) => {
     }
     await jobApplication.destroy();
     res.status(204).send();
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.searchJobApplications = async (req, res) => {
+  try {
+    const { search } = req.query;
+    const whereClause = { userId: req.user.id };
+
+    if (search) {
+      whereClause[Op.or] = [
+        { companyName: { [Op.like]: `%${search}%` } },
+        { jobTitle: { [Op.like]: `%${search}%` } }
+      ];
+    }
+
+    const jobApplications = await JobApplication.findAll({
+      where: whereClause,
+      order: [['applicationDate', 'DESC']]
+    });
+    res.status(200).json(jobApplications);
+  } catch (error) {
+    console.error('Error in searchJobApplications:', error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.filterJobApplications = async (req, res) => {
+  try {
+    const { status, startDate, endDate } = req.query;
+    const whereClause = { userId: req.user.id };
+
+    if (status) {
+      whereClause.status = status;
+    }
+
+    if (startDate && endDate) {
+      whereClause.applicationDate = {
+        [Op.between]: [new Date(startDate), new Date(endDate)]
+      };
+    }
+
+    const jobApplications = await JobApplication.findAll({ where: whereClause });
+    res.status(200).json(jobApplications);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

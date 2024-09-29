@@ -38,9 +38,31 @@
     </nav>
 
     <div class="container mt-4">
-        <h1 class="text-center mb-4">Welcome to your Job Application Tracker</h1>
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="search-input" placeholder="Search by company or job title...">
+                    <button class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <select class="form-control" id="status-filter">
+                        <option value="">All Statuses</option>
+                        <option value="applied">Applied</option>
+                        <option value="interviewed">Interviewed</option>
+                        <option value="offered">Offered</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                    <input type="date" class="form-control" id="start-date" placeholder="Start Date">
+                    <input type="date" class="form-control" id="end-date" placeholder="End Date">
+                    <button class="btn btn-outline-secondary" type="button" id="filter-btn">Filter</button>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-12">
                 <button class="btn btn-primary mb-3" id="add-application-btn">
                     <i class="bi bi-plus-circle"></i> Add New Application
                 </button>
