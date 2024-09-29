@@ -13,6 +13,7 @@ const profileRoute = require('./routes/profileRoute');
 const jobRoute = require('./routes/jobRoute');
 const companyRoute = require('./routes/companyRoute');
 const jobListingRoute = require('./routes/jobLisitingRoute');
+const dashboardRoute = require('./routes/dashboardRoute');
 
 const sequelize = require('./util/database');
 
@@ -37,6 +38,7 @@ app.use('/profile', profileRoute);
 app.use('/job-applications', jobRoute);
 app.use('/companies', companyRoute);
 app.use('/job-listings', jobListingRoute);
+app.use('/dashboard', dashboardRoute);
 
 app.use((req, res, next) => {
   res.setHeader(

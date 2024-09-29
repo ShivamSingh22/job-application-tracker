@@ -1,0 +1,12 @@
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.recent-application {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.recent-application:last-child {
+    border-bottom: none;
+}
